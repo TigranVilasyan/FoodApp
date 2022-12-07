@@ -17,7 +17,7 @@ class ViewModelAssembly: Assembly {
         container.register(RootViewModelType.self) { r in
             return RootViewModel()
         }.inObjectScope(.container)
-    
+        
         //MARK: RecipeDetailViewModelType
         container.register(RecipeDetailViewModelType.self) { r in
             return RecipeDetailViewModel()

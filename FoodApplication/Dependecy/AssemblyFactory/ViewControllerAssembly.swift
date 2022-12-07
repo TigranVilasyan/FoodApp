@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-import Foundation
 import Swinject
 
 class ViewControllerAssembly: Assembly {
@@ -28,5 +26,11 @@ class ViewControllerAssembly: Assembly {
             vc.injection(viewModel: viewModel)
             return vc
         }.inObjectScope(.weak)
+        
+        //MARK: ModalViewController
+        container.register(ModalViewController.self) { r in
+            let vc = Controllers().modalViewController()
+            return vc
+        }.inObjectScope(.container)
     }
 }

@@ -14,6 +14,8 @@ protocol RecipeDetailViewModelInput: AnyObject {
 
 protocol RecipeDetailViewModelOutput: AnyObject {
     func getRecpieDetail(id: Int, complition: @escaping (RecipeDetail?) -> ())
+    func getIngredientDetail(id: Int, complition: @escaping (IngredientDetail?) -> ())
+    
 }
 
 protocol RecipeDetailViewModelType: AnyObject {
@@ -36,6 +38,14 @@ class RecipeDetailViewModel: RecipeDetailViewModelInput,
             guard let _ = self else { return }
             complition(recipe)
             
+        }
+    }
+    
+    
+    func getIngredientDetail(id: Int, complition: @escaping (IngredientDetail?) -> ()) {
+        BackendRequest().getIngredientDetial(id: id) { [weak self] ingredient in
+            guard let _ = self else { return }
+            complition(ingredient)
         }
     }
     

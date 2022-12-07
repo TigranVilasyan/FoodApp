@@ -18,4 +18,9 @@ class Controllers {
     func recipeDetailViewController() -> RecipeDetailViewController {
         return RecipeDetailViewController()
     }
+    
+    //MARK: RecipeDetailViewController
+    func modalViewController() -> ModalViewController {
+        return ModalViewController()
+    }
 }

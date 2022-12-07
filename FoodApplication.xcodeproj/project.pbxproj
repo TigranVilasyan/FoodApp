@@ -27,6 +27,10 @@
 		6F78B11F293E522A00A1962B /* SearchRecipeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F78B11E293E522A00A1962B /* SearchRecipeRequest.swift */; };
 		6F78B122293E530B00A1962B /* Recpie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F78B121293E530B00A1962B /* Recpie.swift */; };
 		6FA05155293E68730033CEE4 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA05154293E68730033CEE4 /* RecipeCollectionViewCell.swift */; };
+		6FB08D30293F6AF000702842 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB08D2F293F6AF000702842 /* ModalViewController.swift */; };
+		6FB08D33293F7F8300702842 /* ModalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB08D32293F7F8300702842 /* ModalCollectionViewCell.swift */; };
+		6FB08D35293FA5A600702842 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB08D34293FA5A600702842 /* Ingredient.swift */; };
+		6FB08D37293FCDD600702842 /* IngredientDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB08D36293FCDD600702842 /* IngredientDetail.swift */; };
 		85DA351E9B66316E2408DAD7 /* Pods_FoodApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AAC6AFFBA92444551DF946E /* Pods_FoodApplication.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +60,10 @@
 		6F78B11E293E522A00A1962B /* SearchRecipeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipeRequest.swift; sourceTree = "<group>"; };
 		6F78B121293E530B00A1962B /* Recpie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recpie.swift; sourceTree = "<group>"; };
 		6FA05154293E68730033CEE4 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		6FB08D2F293F6AF000702842 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		6FB08D32293F7F8300702842 /* ModalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCollectionViewCell.swift; sourceTree = "<group>"; };
+		6FB08D34293FA5A600702842 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		6FB08D36293FCDD600702842 /* IngredientDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +134,7 @@
 		6F78B106293E4B8800A1962B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				6FB08D2E293F6AC900702842 /* ModalViewController */,
 				6F78B107293E4B9500A1962B /* RootViewController */,
 				6F5ABF34293F23D5003A8732 /* RecipeDetailViewController */,
 			);
@@ -200,6 +209,8 @@
 			children = (
 				6F78B121293E530B00A1962B /* Recpie.swift */,
 				6F5ABF39293F2DAC003A8732 /* RecipeDetail.swift */,
+				6FB08D34293FA5A600702842 /* Ingredient.swift */,
+				6FB08D36293FCDD600702842 /* IngredientDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +219,23 @@
 			isa = PBXGroup;
 			children = (
 				6FA05154293E68730033CEE4 /* RecipeCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		6FB08D2E293F6AC900702842 /* ModalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6FB08D31293F7F6100702842 /* Cell */,
+				6FB08D2F293F6AF000702842 /* ModalViewController.swift */,
+			);
+			path = ModalViewController;
+			sourceTree = "<group>";
+		};
+		6FB08D31293F7F6100702842 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6FB08D32293F7F8300702842 /* ModalCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -343,13 +371,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FB08D33293F7F8300702842 /* ModalCollectionViewCell.swift in Sources */,
 				6F78B10F293E4C5600A1962B /* ViewModelAssembly.swift in Sources */,
+				6FB08D35293FA5A600702842 /* Ingredient.swift in Sources */,
 				6F78B11C293E51F500A1962B /* BackendSearchRecipe.swift in Sources */,
 				6F78B0F7293E48FD00A1962B /* RootViewController.swift in Sources */,
 				6F78B119293E519800A1962B /* BackendRequest.swift in Sources */,
 				6FA05155293E68730033CEE4 /* RecipeCollectionViewCell.swift in Sources */,
 				6F78B117293E517F00A1962B /* BackEndHelperRequest.swift in Sources */,
 				6F78B0F3293E48FD00A1962B /* AppDelegate.swift in Sources */,
+				6FB08D30293F6AF000702842 /* ModalViewController.swift in Sources */,
 				6F78B10B293E4C0000A1962B /* Dependency.swift in Sources */,
 				6F78B112293E4CA400A1962B /* Controllers.swift in Sources */,
 				6F78B0F5293E48FD00A1962B /* SceneDelegate.swift in Sources */,
@@ -357,6 +388,7 @@
 				6F5ABF3D293F4D3F003A8732 /* Extention+String.swift in Sources */,
 				6F78B114293E4D5300A1962B /* RootViewModel.swift in Sources */,
 				6F78B10D293E4C2C00A1962B /* ViewControllerAssembly.swift in Sources */,
+				6FB08D37293FCDD600702842 /* IngredientDetail.swift in Sources */,
 				6F5ABF3A293F2DAC003A8732 /* RecipeDetail.swift in Sources */,
 				6F5ABF38293F2434003A8732 /* RecipeDetailViewModel.swift in Sources */,
 				6F5ABF36293F241A003A8732 /* RecipeDetailViewController.swift in Sources */,

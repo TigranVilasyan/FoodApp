@@ -21,23 +21,29 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     }()
     
     lazy var recipeTitleLabel: UILabel = {
-       let titleLabel = UILabel()
+        let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
     
     override init(frame: CGRect) {
-           super.init(frame: frame)
-       }
-
-       required init?(coder aDecoder: NSCoder) {
-           fatalError("init(coder:) has not been implemented")
-       }
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func setup(recipe: RecipeResult) {
         setupConstraints()
         recipeImage.sd_setImage(with: URL(string: recipe.image))
         recipeTitleLabel.text = recipe.title
+    }
+    
+    func setup(ingredient: IngredientResult) {
+        setupConstraints()
+        recipeImage.sd_setImage(with: URL(string: ingredient.image),placeholderImage: UIImage(named: "fast-food-svgrepo-com"))
+        recipeTitleLabel.text = ingredient.name
     }
     
     //MARK: SetupUI and Constraints
@@ -56,5 +62,5 @@ class RecipeCollectionViewCell: UICollectionViewCell {
         recipeTitleLabel.leftAnchor.constraint(equalTo: recipeImage.leftAnchor, constant: 0).isActive = true
         recipeTitleLabel.rightAnchor.constraint(equalTo: recipeImage.rightAnchor, constant: 0).isActive = true
         recipeTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: 0).isActive = true
-        }
+    }
 }

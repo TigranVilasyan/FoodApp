@@ -17,6 +17,7 @@ protocol RootViewModelInput: AnyObject {
 
 protocol RootViewModelOutput: AnyObject {
     func getRecpies(recipe: String,offSet: Int, complition: @escaping (Recipe?) -> ())
+    func getRecipeByIngredients(recipe: String,offSet: Int, complition: @escaping (Ingredient?) -> ())
 }
 
 protocol RootViewModelType: AnyObject {
@@ -27,7 +28,7 @@ protocol RootViewModelType: AnyObject {
 class RootViewModel: RootViewModelInput,
                      RootViewModelOutput,
                      RootViewModelType {
-
+    
     //MARK: Properties
     var inputs: RootViewModelInput { return self }
     var outputs: RootViewModelOutput { return self }
@@ -36,6 +37,15 @@ class RootViewModel: RootViewModelInput,
     //MARK: Output Methods
     func getRecpies(recipe: String,offSet: Int, complition: @escaping (Recipe?) -> ()) {
         BackendRequest().getRecipe(recipe: recipe, offSet: offSet) { [weak self] data in
+            guard let _ = self else {return}
+            if let data = data {
+                complition(data)
+            }
+        }
+    }
+    
+    func getRecipeByIngredients(recipe: String,offSet: Int, complition: @escaping (Ingredient?) -> ()) {
+        BackendRequest().getRecipeByIngredients(recipe: recipe, offSet: offSet) { [weak self] data in
             guard let _ = self else {return}
             if let data = data {
                 complition(data)

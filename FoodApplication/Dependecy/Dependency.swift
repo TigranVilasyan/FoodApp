@@ -10,7 +10,7 @@ import Swinject
 
 
 class Dependency {
-  
+    
     var assembler: Assembler!
     
     var resolver: Resolver {

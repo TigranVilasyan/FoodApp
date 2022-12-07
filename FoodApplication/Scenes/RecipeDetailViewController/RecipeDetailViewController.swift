@@ -9,26 +9,28 @@ import UIKit
 import SDWebImage
 
 class RecipeDetailViewController: UIViewController {
-
+    
     //MARK: Propeties
     var viewModel: RecipeDetailViewModelType!
     var id: Int!
+    var type: FilterTypes = .recipe
     
     //MARK: UI Elementes
     lazy var recipeImage: UIImageView = {
         let theImageView = UIImageView()
+        theImageView.isHidden = true
         theImageView.translatesAutoresizingMaskIntoConstraints = false
         return theImageView
     }()
     
     lazy var recipeTitleLabel: UILabel = {
-       let titleLabel = UILabel()
+        let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
     
     lazy var recipeSummaryText: UITextView = {
-       let textView = UITextView()
+        let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -42,11 +44,25 @@ class RecipeDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupUI()
-        viewModel.outputs.getRecpieDetail(id: id) { [weak self] recipeDetail in
-            guard let _ = self else { return }
-            self?.recipeImage.sd_setImage(with: URL(string: recipeDetail!.image),placeholderImage: UIImage(systemName: "fast-food-svgrepo-com"))
-            self?.recipeTitleLabel.text = recipeDetail?.title
-            self?.recipeSummaryText.text = recipeDetail?.summary.convertHtmlToNSAttributedString?.string
+        recipeImage.isHidden = false
+        switch type {
+        case .recipe:
+            viewModel.outputs.getRecpieDetail(id: id) { [weak self] recipeDetail in
+                guard let _ = self else { return }
+                self?.recipeImage.sd_setImage(with: URL(string: recipeDetail!.image),placeholderImage: UIImage(named: "fast-food-svgrepo-com"),options: .delayPlaceholder)
+                self?.recipeImage.isHidden = false
+                self?.recipeTitleLabel.text = recipeDetail?.title
+                self?.recipeSummaryText.text = recipeDetail?.summary.convertHtmlToNSAttributedString?.string
+            }
+        case .ingredients:
+            viewModel.outputs.getIngredientDetail(id: id) { [weak self] ingredientDetail in
+                guard let _ = self else { return }
+                
+                self?.recipeImage.sd_setImage(with: URL(string: ingredientDetail!.image),placeholderImage: UIImage(named: "fast-food-svgrepo-com"),options: .delayPlaceholder)
+                self?.recipeImage.isHidden = false
+                self?.recipeTitleLabel.text = ingredientDetail?.name
+                self?.recipeSummaryText.isHidden = true
+            }
         }
     }
     
@@ -64,7 +80,7 @@ class RecipeDetailViewController: UIViewController {
         recipeImage.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
         recipeImage.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
         recipeImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
-    
+        
     }
     
     func setupLabelUI() {
